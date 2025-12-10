@@ -16,7 +16,7 @@ class Quiz(quizcomp.util.serial.JSONSerializer):
     """
     A quiz object represents multiple possible assesments (called "variants").
     """
-
+    
     def __init__(self, type = quizcomp.constants.TYPE_QUIZ,
             title = '',
             course_title = '', term_title = '',
@@ -206,3 +206,15 @@ class Quiz(quizcomp.util.serial.JSONSerializer):
         data['_skip_class_validations'] = [Quiz]
 
         return quizcomp.variant.Variant(**data)
+    
+    @property
+    def total_points(self):
+        """
+        total points for the quiz based on question groups.
+        """
+        total=0
+        
+        for group in self.groups:
+            if hasattr(group, 'points') and group.points:
+                total += group.pick_count * group.points      
+        return total

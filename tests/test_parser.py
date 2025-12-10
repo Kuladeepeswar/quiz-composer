@@ -128,7 +128,7 @@ def _add_commonmark_tests():
     The main thing with these tests is ensuring that our custom rendering does not fail.
     """
 
-    with open(tests.base.COMMONMARK_TEST_DATA_PATH, 'r') as file:
+    with open(tests.base.COMMONMARK_TEST_DATA_PATH, 'r',encoding='utf-8') as file:
         test_data = quizcomp.util.json.load(file)
 
     for test_case in test_data:
