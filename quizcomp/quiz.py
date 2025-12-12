@@ -215,7 +215,6 @@ class Quiz(quizcomp.util.serial.JSONSerializer):
         total = 0
 
         for group in self.groups:
-            if (group.points):
-                total += group.pick_count * group.points
+            total += group.pick_count * group.points
 
         return total
