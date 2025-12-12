@@ -1,4 +1,5 @@
 import os
+
 import quizcomp.quiz
 import tests.base
 
@@ -22,7 +23,7 @@ class TestTotalPoints(tests.base.BaseTest):
 
     def test_all_basic_questions_points(self):
         path = os.path.join('tests', 'quizzes', 'good', 'all-basic-questions', 'quiz.json')
-        if os.path.exists(path):
+        if (os.path.exists(path)):
             quiz = quizcomp.quiz.Quiz.from_path(path)
             self.assertIsNotNone(quiz.total_points())
             self.assertGreater(quiz.total_points(), 0)
